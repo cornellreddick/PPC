@@ -8,57 +8,88 @@ namespace PPC
     {
         static void Main()
         {
-            
-            // Start the HandleFile method.
-            Task<int> task = HandleFileAsync();
 
-            // Control returns here before HandleFileAsync returns.
-            // ... Prompt the user.
-            Console.WriteLine("Please wait patiently " +
-                "while I do something important.");
+            while (true)
+            {
+                // Start computation.
+                Example();
+                // Handle user input.
+                string result = Console.ReadLine();
+                Console.WriteLine("You typed: " + result);
+            }
 
-            // Do something at the same time as the file is being read.
-            string line = Console.ReadLine();
-            Console.WriteLine("You entered (asynchronous logic): " + line);
+            //    // Start the HandleFile method.
+            //    Task<int> task = HandleFileAsync();
 
-            // Wait for the HandleFile task to complete.
-            // ... Display its results.
-            task.Wait();
-            var x = task.Result;
-            Console.WriteLine("Count: " + x);
+            //    // Control returns here before HandleFileAsync returns.
+            //    // ... Prompt the user.
+            //    Console.WriteLine("Please wait patiently " +
+            //        "while I do something important.");
 
-            Console.WriteLine("[DONE]");
-            Console.ReadLine();
+            //    // Do something at the same time as the file is being read.
+            //    string line = Console.ReadLine();
+            //    Console.WriteLine("You entered (asynchronous logic): " + line);
+
+            //    // Wait for the HandleFile task to complete.
+            //    // ... Display its results.
+            //    task.Wait();
+            //    var x = task.Result;
+            //    Console.WriteLine("Count: " + x);
+
+            //    Console.WriteLine("[DONE]");
+            //    Console.ReadLine();
+            //}
+
+            //static async Task<int> HandleFileAsync()
+            //{
+            //    string file = @"C:\Users\enable1.txt";
+            //    Console.WriteLine("HandleFile enter");
+            //    int count = 0;
+
+            //    // Read in the specified file.
+            //    // ... Use async StreamReader method.
+            //    using (StreamReader reader = new StreamReader(file))
+            //    {
+            //        string v = await reader.ReadToEndAsync();
+
+            //        // ... Process the file data somehow.
+            //        count += v.Length;
+
+            //        // ... A slow-running computation.
+            //        //     Dummy code.
+            //        for (int i = 0; i < 10000; i++)
+            //        {
+            //            int x = v.GetHashCode();
+            //            if (x == 0)
+            //            {
+            //                count--;
+            //            }
+            //        }
+            //    }
+            //    Console.WriteLine("HandleFile exit");
+            //    return count;
         }
 
-        static async Task<int> HandleFileAsync()
+        static async void Example()
         {
-            string file = @"C:\Users\enable1.txt";
-            Console.WriteLine("HandleFile enter");
-            int count = 0;
+            // This method runs asynchronously.
+            int t = await Task.Run(() => Allocate());
+            Console.WriteLine("Compute: " + t);
+        }
 
-            // Read in the specified file.
-            // ... Use async StreamReader method.
-            using (StreamReader reader = new StreamReader(file))
+        static int Allocate()
+        {
+            // Compute total count of digits in strings.
+            int size = 0;
+            for (int z = 0; z < 100; z++)
             {
-                string v = await reader.ReadToEndAsync();
-
-                // ... Process the file data somehow.
-                count += v.Length;
-
-                // ... A slow-running computation.
-                //     Dummy code.
-                for (int i = 0; i < 10000; i++)
+                for (int i = 0; i < 1000000; i++)
                 {
-                    int x = v.GetHashCode();
-                    if (x == 0)
-                    {
-                        count--;
-                    }
+                    string value = i.ToString();
+                    size += value.Length;
                 }
             }
-            Console.WriteLine("HandleFile exit");
-            return count;
+            return size;
         }
     }
     
