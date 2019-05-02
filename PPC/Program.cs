@@ -229,24 +229,123 @@ namespace PPC
 
             //--------------------------------------------------------------------------
 
-        //    Console.WriteLine("Please enter two numbers: ");
+            //    Console.WriteLine("Please enter two numbers: ");
 
-        //    Console.WriteLine("Enter the first number: ");
-        //    int number1 = Convert.ToInt32(Console.ReadLine());
-          
-        //    Console.WriteLine("Enter the second number: ");
-        //    int number2 = Convert.ToInt32(Console.ReadLine());
+            //    Console.WriteLine("Enter the first number: ");
+            //    int number1 = Convert.ToInt32(Console.ReadLine());
 
-        //    for (int i = number1; i <= number2; i++)
-        //    {
-        //        if (i % 5 == 0)
-        //        {
-        //            Console.WriteLine(i);
-        //        }
+            //    Console.WriteLine("Enter the second number: ");
+            //    int number2 = Convert.ToInt32(Console.ReadLine());
 
-        //    }
+            //    for (int i = number1; i <= number2; i++)
+            //    {
+            //        if (i % 5 == 0)
+            //        {
+            //            Console.WriteLine(i);
+            //        }
 
-        //}
+            //    }
+
+            //--------------------------------------------------------------------------
+
+            //int[] statues = {6 , 3 };
+
+            //int counter = 0;
+            //int min;
+
+
+            //for (int i = 0; i < statues.Length; i++)
+            //{
+            //    for (int j = i + 1; j < statues.Length; j++)
+            //    {
+            //        if (statues[i] > statues[j])
+            //        {
+
+            //            min = statues[j];
+            //            statues[j] = statues[i];
+            //            statues[i] = min;
+            //            counter++;
+
+            //        }
+            //        if (statues[i]< statues )
+            //        {
+
+            //        }
+
+            //        if (statues[i] == 0)
+            //        {
+            //            statues[i]++;
+
+            //            while (statues[i] < statues[j])
+            //            {
+            //                statues[i]++;
+            //                counter++;
+            //            }
+            //        }
+            //    }
+            //}
+
+            //Console.WriteLine($"The counts = {counter}");
+
+            //--------------------------------------------------------------------------
+
+            //Console.WriteLine("Please enter a number greater than 2: ");
+            //int number = Convert.ToInt32(Console.ReadLine());
+
+            //for (int i = 1; i < number; i++)
+            //{
+            //    Console.Write(i + " ");
+            //}
+
+            //--------------------------------------------------------------------------
+
+            //Console.WriteLine("Please enter a number: ");
+            //int number = Convert.ToInt32(Console.ReadLine());
+
+            //bool isDivisible = (number % (3 * 7) == 0) ? true : false;
+            //if (isDivisible)
+            //{
+            //    Console.WriteLine($"The number {number} is divisible by 3 or 7.");
+            //}
+            //else
+            //{
+            //    Console.WriteLine($"The number {number} is not divisible by 3 or 7.");
+            //}
+
+            //--------------------------------------------------------------------------
+
+            int smallest = 0;
+            int largest = 0;
+            int input;
+
+            Console.WriteLine("Please enter the number of inputs:");
+            int num = int.Parse(Console.ReadLine());
+
+            for (int i = 0; i < num; i++)
+            {
+                Console.WriteLine($"Enter number: ");
+                input = Int32.Parse(Console.ReadLine());
+
+                if (i == 0)
+                {
+                    smallest = largest = input;  
+                }
+                else
+                {
+                    if (smallest > input)
+                    {
+                        smallest = input;
+                    }
+                    if (smallest < input)
+                    {
+                        largest = input;
+                        
+                    }
+                }
+            }
+
+            Console.WriteLine($"The smallest number is {smallest} and the largest number is {largest}");
+        }
 
     }
 }
