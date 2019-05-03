@@ -533,25 +533,32 @@ namespace PPC
 
             //--------------------------------------------------------------------------
 
-            var list = new List<KeyValuePair<string, int>>();
+            //var list = new List<KeyValuePair<string, int>>();
 
-            list.Add(new KeyValuePair<string, int>("Cat", 1));
-            list.Add(new KeyValuePair<string, int>("Dog", 2));
-            list.Add(new KeyValuePair<string, int>("Rat", 3));
-            list.Add(new KeyValuePair<string, int>("Horse", 4));
-            list.Add(new KeyValuePair<string, int>("Mice", 5));
+            //list.Add(new KeyValuePair<string, int>("Cat", 1));
+            //list.Add(new KeyValuePair<string, int>("Dog", 2));
+            //list.Add(new KeyValuePair<string, int>("Rat", 3));
+            //list.Add(new KeyValuePair<string, int>("Horse", 4));
+            //list.Add(new KeyValuePair<string, int>("Mice", 5));
 
-            foreach (var item in list)
-            {
-                Console.WriteLine(item.Value);
-                
-            }
+            //foreach (var item in list)
+            //{
+            //    Console.WriteLine(item.Value);
+
+            //}
 
             //--------------------------------------------------------------------------
 
+            Dictionary<string, int> birds = new Dictionary<string, int>()
+            {
+                {"Cardinal", 10 },
+                {"Robin", 5 }
+            };
 
-
-
+            foreach (var bird in birds)
+            {
+                Console.WriteLine($"Pair here: {bird.Key}, {bird.Value}");
+            }
         }
     }   
 }
