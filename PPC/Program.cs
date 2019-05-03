@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
 using System.Threading.Tasks;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace PPC
 {
@@ -314,38 +316,242 @@ namespace PPC
 
             //--------------------------------------------------------------------------
 
-            int smallest = 0;
-            int largest = 0;
-            int input;
+            //        int smallest = 0;
+            //        int largest = 0;
+            //        int input;
 
-            Console.WriteLine("Please enter the number of inputs:");
-            int num = int.Parse(Console.ReadLine());
+            //        Console.WriteLine("Please enter the number of inputs:");
+            //        int num = int.Parse(Console.ReadLine());
 
-            for (int i = 0; i < num; i++)
+            //        for (int i = 0; i < num; i++)
+            //        {
+            //            Console.WriteLine($"Enter number: ");
+            //            input = Int32.Parse(Console.ReadLine());
+
+            //            if (i == 0)
+            //            {
+            //                smallest = largest = input;  
+            //            }
+            //            else
+            //            {
+            //                if (smallest > input)
+            //                {
+            //                    smallest = input;
+            //                }
+            //                if (smallest < input)
+            //                {
+            //                    largest = input;
+
+            //                }
+            //            }
+            //        }
+
+            //        Console.WriteLine($"The smallest number is {smallest} and the largest number is {largest}");
+
+            //--------------------------------------------------------------------------
+
+            //string[] spade;
+            //string [] hearts;
+            //string [] diamonds;
+            //string [] clubs;
+
+
+            //for (int i = 0; i < 4; i++)
+            //{
+            //    if (i != 0) Console.WriteLine();
+
+            //    for (int j = 0; j < 13; j++)
+            //    {
+            //        switch (i)
+            //        {
+            //            case 0: Console.Write("Hearts "); break;
+            //            case 1: Console.Write("Diamonds "); break;
+            //            case 2: Console.Write("Spades "); break;
+            //            case 3: Console.Write("Clubs "); break;
+            //        }
+            //        switch (j)
+            //        {
+            //            case 0: Console.WriteLine("2"); break;
+            //            case 1: Console.WriteLine("3"); break;
+            //            case 2: Console.WriteLine("4"); break;
+            //            case 3: Console.WriteLine("5"); break;
+            //            case 4: Console.WriteLine("6"); break;
+            //            case 5: Console.WriteLine("7"); break;
+            //            case 6: Console.WriteLine("8"); break;
+            //            case 7: Console.WriteLine("9"); break;
+            //            case 8: Console.WriteLine("10"); break;
+            //            case 9: Console.WriteLine("J"); break;
+            //            case 10: Console.WriteLine("Q"); break;
+            //            case 11: Console.WriteLine("K"); break;
+            //            case 12: Console.WriteLine("A"); break;
+            //        }
+            //    }
+            //}
+            //Console.ReadLine();
+
+            //--------------------------------------------------------------------------
+            //int first = 0;
+            //int second = 1;
+            //int third = 0;
+            //Console.WriteLine("Please enter a number:");
+            //int length = Convert.ToInt32(Console.ReadLine());
+
+            //Console.WriteLine("0\n1");
+
+            //for (int i = 2; i < length; i++)
+            //{
+            //    third = first + second;
+            //    Console.WriteLine("{0}", third);
+            //    first = second;
+            //    second = third;
+            //}
+
+            //--------------------------------------------------------------------------
+
+            //int[] arr = new int[20];
+
+            //for (int i = 0; i < arr.Length; i++)
+            //{
+            //    arr[i] = i * 5;
+            //}
+
+            //Console.ForegroundColor = ConsoleColor.Yellow;
+            //Random ran = new Random();
+            //var r = new Random();
+            //string[] color = { "Red", "Black" };
+            //string guess;
+            //int attempts = 0;
+            //int bet;
+            //int money = 500;
+            //while (money != 0)
+            //{
+            //    Console.WriteLine("Roulette Roller by Cornell\n");
+            //    Console.WriteLine("Money:$" + money + "                  Attempts: " + attempts);
+            //    Console.WriteLine("Type in any off the following letters below:");
+            //    Console.WriteLine("a.Even    b.Odd    c.1 to 18    d.19 to 36");
+            //    Console.WriteLine("e.Red     f.Black  g.1st 12     h.2nd 12");
+            //    Console.WriteLine("i.3rd 12");
+            //    guess = (Console.ReadLine());
+            //    //guess verifier
+            //    guess.ToLower();
+            //    bool check = guess == "a" || guess == "b" || guess == "c" || guess == "d" || guess == "e" || guess == "f" || guess == "g" || guess == "h" || guess == "i";
+            //    if (check == false)
+            //    {
+            //        Console.WriteLine("You did not enter the correct input value(even/odd)");
+            //        Console.ReadKey();
+            //        Console.Clear();
+            //        continue;
+            //    }
+            //    else
+            //    {
+            //    bet:
+            //        Console.WriteLine("Enter an amount to bet");
+            //        bet = Convert.ToInt32(Console.ReadLine());
+            //        //bet verifier
+            //        if (bet > money)
+            //        {
+            //            Console.WriteLine("You dont have enough money!");
+            //            Console.WriteLine("Press enter to try again.");
+            //            Console.ReadKey();
+            //            goto bet;
+            //        }
+            //        else
+            //        {
+            //            money -= bet;
+            //            int roll = ran.Next(0, 37);
+            //            string ranColor = color[r.Next(color.Length)];
+            //            bool even = roll % 2 == 0;
+            //            if ((((guess == "a") && (even == true))) || (((guess == "b") && (even == false))) || ((guess == "e") && (ranColor == "Red") || (guess == "f") && (ranColor == "Black")))
+            //            {
+            //                Console.WriteLine("The roulette rolled: " + ranColor + " " + roll);
+            //                Console.WriteLine("You won! +$" + bet * 2 + "!");
+            //                Console.WriteLine("<Press enter to continue>");
+            //                money += bet * 2;
+            //                attempts += 1;
+            //                Console.ReadKey();
+            //            }
+            //            else if ((guess == "c") && ((roll > 0) && (roll < 19)))
+            //            {
+            //                Console.WriteLine("The roulette rolled: " + ranColor + " " + roll);
+            //                Console.WriteLine("You won! +$" + bet * 2 + "!");
+            //                Console.WriteLine("<Press enter to continue>");
+            //                money += bet * 2;
+            //                attempts += 1;
+            //                Console.ReadKey();
+            //            }
+            //            else if ((guess == "d") && ((roll > 18) && (roll < 37)))
+            //            {
+            //                Console.WriteLine("The roulette rolled: " + ranColor + " " + roll);
+            //                Console.WriteLine("You won! +$" + bet * 2 + "!");
+            //                Console.WriteLine("<Press enter to continue>");
+            //                money += bet * 2;
+            //                attempts += 1;
+            //                Console.ReadKey();
+            //            }
+            //            else if ((guess == "g") && (roll > 0 && roll < 13) || (guess == "h") && (roll > 12 && roll < 25) || (guess == "i") && (roll > 24 && roll < 37))
+            //            {
+            //                Console.WriteLine("The roulette rolled: " + ranColor + " " + roll);
+            //                Console.WriteLine("You won! +$" + bet * 2 + "!");
+            //                Console.WriteLine("<Press enter to continue>");
+            //                money += bet * 3;
+            //                attempts += 1;
+            //                Console.ReadKey();
+            //            }
+            //            else
+            //            {
+            //                Console.WriteLine("The roulette rolled: " + ranColor + " " + roll);
+            //                Console.WriteLine("You lost! -$" + bet + "!");
+            //                Console.WriteLine("<Press enter to continue>");
+            //                attempts += 1;
+            //                Console.ReadKey();
+            //                if (money == 0)
+            //                {
+            //                    Console.WriteLine("You are out of money.");
+            //                    Console.WriteLine("<Press enter to continue>");
+            //                    Console.ReadKey();
+            //                }
+            //            }
+            //        }
+            //    }
+            //    Console.Clear();
+
+            //}
+
+
+            //Car car1 = new Car();
+
+            //car1.Color = "Black";
+            //car1.Engine = "V8";
+            //car1.Model = "Accord";
+            //car1.Make = "Honda";
+
+            //Console.WriteLine(car1);
+
+
+            ////List<Car> car = new List<Car>();
+            ///
+
+            //--------------------------------------------------------------------------
+
+            var list = new List<KeyValuePair<string, int>>();
+
+            list.Add(new KeyValuePair<string, int>("Cat", 1));
+            list.Add(new KeyValuePair<string, int>("Dog", 2));
+            list.Add(new KeyValuePair<string, int>("Rat", 3));
+            list.Add(new KeyValuePair<string, int>("Horse", 4));
+            list.Add(new KeyValuePair<string, int>("Mice", 5));
+
+            foreach (var item in list)
             {
-                Console.WriteLine($"Enter number: ");
-                input = Int32.Parse(Console.ReadLine());
-
-                if (i == 0)
-                {
-                    smallest = largest = input;  
-                }
-                else
-                {
-                    if (smallest > input)
-                    {
-                        smallest = input;
-                    }
-                    if (smallest < input)
-                    {
-                        largest = input;
-                        
-                    }
-                }
+                Console.WriteLine(item.Value);
+                
             }
 
-            Console.WriteLine($"The smallest number is {smallest} and the largest number is {largest}");
-        }
+            //--------------------------------------------------------------------------
 
-    }
+
+
+
+        }
+    }   
 }
