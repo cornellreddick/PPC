@@ -3,6 +3,7 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace PPC
 {
@@ -10,6 +11,8 @@ namespace PPC
     {
         static void Main()
         {
+
+            #region
             //-----------------------------------------------------------------------
             //Write a program that prints the following numbers on the console 1,
             //101, 1001, each on a new line.
@@ -549,16 +552,80 @@ namespace PPC
 
             //--------------------------------------------------------------------------
 
-            Dictionary<string, int> birds = new Dictionary<string, int>()
-            {
-                {"Cardinal", 10 },
-                {"Robin", 5 }
-            };
+            //Dictionary<string, int> birds = new Dictionary<string, int>()
+            //{
+            //    {"Cardinal", 10 },
+            //    {"Robin", 5 }
+            //};
 
-            foreach (var bird in birds)
+            //foreach (var bird in birds)
+            //{
+            //    Console.WriteLine($"Pair here: {bird.Key}, {bird.Value}");
+            //}
+
+            //var info = new List<KeyValuePair<int, int>>()
+            //{
+            //    new KeyValuePair<int, int>(1,6),
+            //    new KeyValuePair<int, int>(2,3),
+            //    new KeyValuePair<int, int>(3,4)
+            //};
+
+            //info.Sort((a, b) => (b.Value.CompareTo(a.Value)));
+
+            //foreach (var item in info)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+            //--------------------------------------------------------------------------
+
+            //Person person1 = new Person();
+            //Console.WriteLine(person1.Name);
+
+            //Person person2 = new Person("Cornell Reddick");
+            //Console.WriteLine(person2.Name);
+
+            //Console.WriteLine(person2);
+            #endregion
+
+
+            //int[] array = { 1, 3, 5, 7, };
+            //Console.WriteLine(array.Average());
+
+            //Console.WriteLine(MultiplyByTwo(8));
+
+            
+            int [] array = { 1,2,3,4,5,6,7,8 };
+
+            var elements = from element in array
+                           orderby element descending
+                           where element > 2
+                           select element;
+
+            foreach (var element in elements)
             {
-                Console.WriteLine($"Pair here: {bird.Key}, {bird.Value}");
+                Console.WriteLine(element);
+                Console.WriteLine(" ");
             }
+
+            string[] siblings = { "Tasha", "Maurice", "Samuel", "Armando", "Ellona" };
+
+            var members = from member in siblings
+                          orderby member ascending
+                          select member;
+
+            foreach (var member in members)
+            {
+                Console.WriteLine(member + " " + "Reddick");
+                Console.WriteLine(" ");
+            }
+
         }
+
+        //public static int MultiplyByTwo(int value)
+        //{
+        //    return value * 2;
+        //}
     }   
+    
 }
