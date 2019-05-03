@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Diagnostics;
 
 namespace PPC
 {
@@ -594,38 +595,94 @@ namespace PPC
 
             //Console.WriteLine(MultiplyByTwo(8));
 
-            
-            int [] array = { 1,2,3,4,5,6,7,8 };
 
-            var elements = from element in array
-                           orderby element descending
-                           where element > 2
-                           select element;
+            //int [] array = { 1,2,3,4,5,6,7,8 };
 
-            foreach (var element in elements)
+            //var elements = from element in array
+            //               orderby element descending
+            //               where element > 2
+            //               select element;
+
+            //foreach (var element in elements)
+            //{
+            //    Console.WriteLine(element);
+            //    Console.WriteLine(" ");
+            //}
+
+            //string[] siblings = { "Tasha", "Maurice", "Samuel", "Armando", "Ellona" };
+
+            //var members = from member in siblings
+            //              orderby member ascending
+            //              select member;
+
+            //foreach (var member in members)
+            //{
+            //    Console.WriteLine(member + " " + "Reddick");
+            //    Console.WriteLine(" ");
+            //}
+
+            //--------------------------------------------------------------------------
+
+            int[] values = { 10, 0, 1, 1, 20, 300, 400, 4 };
+
+
+            //Using Linq
+            var start1 = Stopwatch.StartNew();
+            for (int i = 0; i < _max; i++)
             {
-                Console.WriteLine(element);
-                Console.WriteLine(" ");
+                int count = CountLinq(values);
             }
 
-            string[] siblings = { "Tasha", "Maurice", "Samuel", "Armando", "Ellona" };
+            start1.Stop();
 
-            var members = from member in siblings
-                          orderby member ascending
-                          select member;
-
-            foreach (var member in members)
+            //Using For
+            var start2 = Stopwatch.StartNew();
+            for (int i = 0; i < _max; i++)
             {
-                Console.WriteLine(member + " " + "Reddick");
-                Console.WriteLine(" ");
+                int count = CountFor(values);
             }
+
+            start2.Stop();
+
+            Console.WriteLine("Linq");
+            Console.WriteLine(((double)(start1.Elapsed.TotalMilliseconds * 1000000) / _max).ToString("0.00 ns"));
+            Console.WriteLine("For");
+            Console.WriteLine(((double)(start2.Elapsed.TotalMilliseconds * 1000000) / _max).ToString("0.00 ns"));
+
 
         }
+
+        const int _max = 1000000;
 
         //public static int MultiplyByTwo(int value)
         //{
         //    return value * 2;
         //}
+        
+
+        // the difference between using count with Linq and the For iteration.
+        static int CountLinq(int [] values)
+        {
+            // We will count values that are greater then or equal to 10 using Linq
+            return (from x in values
+                    where x >= 10
+                    select x).Count();
+        }
+
+        static int CountFor(int[] values)
+        {
+            // Count values greater than or equal to 10 with loop.
+            int count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= 10)
+                {
+                    count++;
+                }
+            }
+            return count;
+        }
+
     }   
     
 }
