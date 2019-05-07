@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Diagnostics;
+using System.Threading;
 
 namespace PPC
 {
@@ -623,66 +624,121 @@ namespace PPC
 
             //--------------------------------------------------------------------------
 
-            int[] values = { 10, 0, 1, 1, 20, 300, 400, 4 };
+            //int[] values = { 10, 0, 1, 1, 20, 300, 400, 4 };
 
 
-            //Using Linq
-            var start1 = Stopwatch.StartNew();
-            for (int i = 0; i < _max; i++)
+            ////Using Linq
+            //var start1 = Stopwatch.StartNew();
+            //for (int i = 0; i < _max; i++)
+            //{
+            //    int count = CountLinq(values);
+            //}
+
+            //start1.Stop();
+
+            ////Using For
+            //var start2 = Stopwatch.StartNew();
+            //for (int i = 0; i < _max; i++)
+            //{
+            //    int count = CountFor(values);
+            //}
+
+            //start2.Stop();
+
+            //Console.WriteLine("Linq");
+            //Console.WriteLine(((double)(start1.Elapsed.TotalMilliseconds * 1000000) / _max).ToString("0.00 ns"));
+            //Console.WriteLine("For");
+            //Console.WriteLine(((double)(start2.Elapsed.TotalMilliseconds * 1000000) / _max).ToString("0.00 ns"));
+
+            //--------------------------------------------------------------------------
+
+            //const int _max = 1000000;
+
+            //public static int MultiplyByTwo(int value)
+            //{
+            //    return value * 2;
+            //}
+
+
+            // the difference between using count with Linq and the For iteration.
+            //static int CountLinq(int [] values)
+            //{
+            //    // We will count values that are greater then or equal to 10 using Linq
+            //    return (from x in values
+            //            where x >= 10
+            //            select x).Count();
+            //}
+
+            //static int CountFor(int[] values)
+            //{
+            //    // Count values greater than or equal to 10 with loop.
+            //    int count = 0;
+            //    for (int i = 0; i < values.Length; i++)
+            //    {
+            //        if (values[i] >= 10)
+            //        {
+            //            count++;
+            //        }
+            //    }
+            //    return count;
+            //}
+
+
+            //--------------------------------------------------------------------------
+
+            //Person person1 = new Person();
+            //person1.Name = "Cornell Reddick";
+            //person1.Age = 40;
+            //person1.Running();
+
+            //Person person2 = new Person("Maurice Reddick", 47);
+            //person2.Dunking();
+
+            //Console.WriteLine($"{person1.Name} is {person1.Age}\n{person2.Name} is {person2.Age}");
+
+            //--------------------------------------------------------------------------
+
+            //string str = "I'm going to select the number 7 from this string.";
+            //str.Count();
+            //Console.WriteLine(str.Count());
+
+            //string stri = "aabaa";
+
+            //if (stri[0] == stri[4])
+            //{
+            //    Console.WriteLine("They are equal.");
+            //}
+
+
+            //Animal animal1 = new Animal("Rex", "Red", "Dog");
+            //animal1.Speak();
+
+
+            //Animal animal2 = new Animal("Fuzzy", "Black", "Cat");
+            //animal2.Speak();
+
+            Thread t = new Thread(new ThreadStart(ThreadMethod));
+            t.Start();
+
+            for (int i = 0; i < 4; i++)
             {
-                int count = CountLinq(values);
+                Console.WriteLine("Main thread: Do some work.");
+                Thread.Sleep(0);
             }
-
-            start1.Stop();
-
-            //Using For
-            var start2 = Stopwatch.StartNew();
-            for (int i = 0; i < _max; i++)
-            {
-                int count = CountFor(values);
-            }
-
-            start2.Stop();
-
-            Console.WriteLine("Linq");
-            Console.WriteLine(((double)(start1.Elapsed.TotalMilliseconds * 1000000) / _max).ToString("0.00 ns"));
-            Console.WriteLine("For");
-            Console.WriteLine(((double)(start2.Elapsed.TotalMilliseconds * 1000000) / _max).ToString("0.00 ns"));
-
-
+            t.Join();
         }
 
-        const int _max = 1000000;
 
-        //public static int MultiplyByTwo(int value)
-        //{
-        //    return value * 2;
-        //}
-        
-
-        // the difference between using count with Linq and the For iteration.
-        static int CountLinq(int [] values)
+        public static void ThreadMethod()
         {
-            // We will count values that are greater then or equal to 10 using Linq
-            return (from x in values
-                    where x >= 10
-                    select x).Count();
-        }
-
-        static int CountFor(int[] values)
-        {
-            // Count values greater than or equal to 10 with loop.
-            int count = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < 10; i++)
             {
-                if (values[i] >= 10)
-                {
-                    count++;
-                }
+                Console.WriteLine("ThreadProc: {0}", i);
+                Thread.Sleep(0);
             }
-            return count;
         }
 
-    }   
-    
+
+    }
+
 }
